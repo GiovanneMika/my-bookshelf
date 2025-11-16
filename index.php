@@ -35,10 +35,10 @@
                 </svg>
             </button>
         </form>
-        <section class="flex gap-x-4 gap-y-4 flex-wrap items-center justify-center w-full">
-            <div class="bg-white border border-gray-300 rounded-lg shadow w-2/3 sm:w-1/3 p-2">
+        <section class="flex gap-x-4 gap-y-4 flex-wrap items-center w-full justify-center sm:justify-start">
+            <div class="bg-white border border-gray-300 rounded-lg shadow w-2/3 sm:w-[48%] md:w-[32%] xl:w-[24%] p-2">
                 <div class="flex flex-row gap-x-2 h-2/3">
-                    <div class="w-1/4 bg-emerald-400 h-full">
+                    <div class="w-1/4 bg-emerald-400 h-full self-center">
                         <img class="size-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTzTSYsjZsm_cRppRDKoRFqc-QyOZUI7XfrA&s" alt="">
                     </div>
                     <div class="w-3/4 p-1.5">
