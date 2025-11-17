@@ -1,3 +1,7 @@
+<?php
+require_once 'dados.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +16,7 @@
     <header class="bg-gray-800 text-gray-100 shadow">
         <nav class="mx-auto max-w-screen-2xl py-4 px-8 flex justify-between text-lg flex-wrap gap-y-4 gap-x-8">
             <div class="flex gap-x-8 items-center">
-                <h1 class="text-2xl font-bold underline tracking-wide">MyBookShelf</h1>
+                <h1 class="text-2xl font-bold underline tracking-wide"><a href="/">MyBookShelf</a></h1>
             </div>
             <ul class="flex gap-x-8 items-center font-bold">
                 <li><a class="text-emerald-400 transition-colors duration-200" href="/">Explorar</a></li>
@@ -35,22 +39,26 @@
                 </svg>
             </button>
         </form>
-        <section class="flex gap-x-4 gap-y-4 flex-wrap items-center w-full justify-center sm:justify-start">
-            <div class="bg-white border border-gray-300 rounded-lg shadow w-2/3 sm:w-[48%] md:w-[32%] xl:w-[24%] p-2">
-                <div class="flex flex-row gap-x-2 h-2/3">
-                    <div class="w-1/4 bg-emerald-400 h-full self-center">
-                        <img class="size-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTzTSYsjZsm_cRppRDKoRFqc-QyOZUI7XfrA&s" alt="">
+        <section class="gap-4 grid-cols-1 xl:grid-cols-4 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2">
+            <?php foreach ($livros as $livro) : ?>
+                <div class="bg-white border border-gray-300 rounded-lg shadow p-2 py-4 hover:shadow-lg transition-shadow duration-200">
+                    <div class="flex flex-row gap-x-2 h-2/3">
+                        <div class="w-1/3 bg-emerald-400">
+                            <img class="size-full" src="<?= $livro['capa']; ?>" alt="">
+                        </div>
+                        <div class="w-2/3 p-1.5">
+                            <a href="/livro.php?id=<?= $livro['id']; ?>" class="font-semibold text-3xl sm:text-2xl hover:underline"><?= $livro['titulo']; ?></a>
+                            <div class="sm:text-sm italic"><?= $livro['autor']; ?></div>
+                            <div class="sm:text-sm italic"><?php for ($i = 0; $i < $livro['nota']; $i++) {
+                                                                echo "⭐";
+                                                            } ?>(<?= $livro['avaliacoes']; ?> avaliações)</div>
+                        </div>
                     </div>
-                    <div class="w-3/4 p-1.5">
-                        <div class="font-semibold text-2xl ">O Alienista</div>
-                        <div class="text-sm italic">Machado de Assis</div>
-                        <div class="text-sm italic">⭐⭐⭐⭐(3 avaliações)</div>
+                    <div class="text-sm sm:text-xs mt-2">
+                        <?= $livro['descricao']; ?>
                     </div>
                 </div>
-                <div class="text-xs mt-2">
-                    "O Alienista" é um conto de Machado de Assis sobre o médico Simão Bacamarte, que se dedica ao estudo da loucura na cidade fictícia de Itaguaí ao construir um hospício chamado Casa Verde.
-                </div>
-            </div>
+            <?php endforeach; ?>
         </section>
     </main>
 </body>
